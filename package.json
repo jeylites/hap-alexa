@@ -1,0 +1,24 @@
+{
+  "name": "hap-alexa",
+  "version": "0.0.1",
+  "description": "HAP-NodeJS Modules to support Amazon Alexa Integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NorthernMan54/HAP-Alexa.git"
+  },
+  "keywords": [
+    "hap-nodejs",
+    "homebridge",
+    "alexa"
+  ],
+  "author": "NorternMan54",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/NorthernMan54/HAP-Alexa/issues"
+  },
+  "homepage": "https://github.com/NorthernMan54/HAP-Alexa#readme"
+}
