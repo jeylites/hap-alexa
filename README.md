@@ -13,7 +13,7 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 
 # Configuration
 
-* add a new setting "ssdp" to the bridge section of your config.json file. Value must be 1900. i.e
+* add a new setting "ssdp" to the bridge section of your homebridge config.json file. Value must be 1900. i.e
  
 ```
  "bridge": {
