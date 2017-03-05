@@ -192,5 +192,6 @@ function getHueBridgeMac() {
 }
 
 function sleep(time) {
+    debug('sleep for',time);
     return new Promise((resolve) => setTimeout(resolve, time));
 }
