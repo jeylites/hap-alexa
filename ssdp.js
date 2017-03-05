@@ -18,6 +18,15 @@ module.exports = {
 
 let udpServer;
 
+// Amazon Alex / Hue discovery message on port 50000
+
+// M-SEARCH * HTTP/1.1
+// HOST: 239.255.255.250:1900
+// MAN: "ssdp:discover"
+// MX: 15   - Up to 15 seconds to respond
+// ST: urn:schemas-upnp-org:device:basic:1
+//
+
 function getDiscoveryResponses() {
 
     let responseString = `HTTP/1.1 200 OK
@@ -78,18 +87,20 @@ function startSsdpServer(_config) {
                 if (msg.indexOf('ssdp:discover') > 0 && msg.indexOf('urn:schemas-upnp-org:device:basic') > 0) {
                     debug(`<< server got Hue: ${msg} from ${rinfo.address}:${rinfo.port}`);
                     var response = getDiscoveryResponses();
-                    udpServer.send(response, rinfo.port, rinfo.address, () => {
-                        debug('>> sent response ssdp discovery response', response);
+                    sleep(Math.random()*15000).then(() => {
+                        // Do something after the sleep!
+                        udpServer.send(response, rinfo.port, rinfo.address, () => {
+                            debug('>> sent response ssdp discovery response', response);
 
+                        });
                     });
-
                 }
             });
 
             udpServer.on('listening', () => {
                 try {
                     const address = udpServer.address();
-                    debug(`server listening ${address.address}:${address.port}`);
+                    debug(`server listening ${address.address}:${address.port}`, ip.address());
                     //TODO:  Add logical interface
                     udpServer.addMembership('239.255.255.250', ip.address());
                     deferred.resolve();
@@ -177,5 +188,9 @@ function getHueUSN() {
 }
 
 function getHueBridgeMac() {
-  return (config.username)
+    return (config.username)
+}
+
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
 }
