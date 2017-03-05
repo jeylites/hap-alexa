@@ -31,6 +31,10 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 * If you run homebridge on the same machine as Kodi, this feature will not work and you will receive an error during startup. If you start homebridge first, then Kodi it should be okay.
 * Only one per machine. If you are running multiple copies of homebridge on a machine, it will not work.
 
+# Troubleshooting / Issues
+
+* I have created a slack channel at (https://homebridgeteam.slack.com/messages/hap-alexa/) to troubleshoot issues.
+
 # Credits
 
 * dsandor/fauxmojs - For the NodeJS UPNP/SSDP module
