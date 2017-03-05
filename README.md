@@ -3,6 +3,7 @@
 
 HAP-Alexa is a addon to HomeBridge / HAP-NodeJS that adds Amazon Alexa control to your Homebridge devices.
 
+This is not a typical npm package, as it is not usable without Homebridge / HAP-NodeJS and is used exclusively by them.
 
 # Installation
 
