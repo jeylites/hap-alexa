@@ -1,12 +1,12 @@
 {
   "name": "hap-alexa",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "HAP-NodeJS Modules to support Amazon Alexa Integration",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-"dependencies": {
+  "dependencies": {
     "ip": "^1.1.3",
     "lodash": "^4.17.3",
     "q": "^1.4.1",
