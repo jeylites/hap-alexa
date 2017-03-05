@@ -3,7 +3,7 @@
 var ip = require('ip');
 const debug = require('debug')('hue');
 var ssdp = require('./ssdp');
-var once = require('./once').once;
+var once = require('hap-nodejs/lib/util/once').once;
 
 var hueDevices = {};
 

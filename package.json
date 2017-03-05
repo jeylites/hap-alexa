@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+"dependencies": {
+    "ip": "^1.1.3",
+    "lodash": "^4.17.3",
+    "q": "^1.4.1",
+    "async": "^2.1.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NorthernMan54/HAP-Alexa.git"
