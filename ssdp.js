@@ -87,7 +87,7 @@ function startSsdpServer(_config) {
                 if (msg.indexOf('ssdp:discover') > 0 && msg.indexOf('urn:schemas-upnp-org:device:basic') > 0) {
                     debug(`<< server got Hue: ${msg} from ${rinfo.address}:${rinfo.port}`);
                     var response = getDiscoveryResponses();
-                    sleep(Math.random()*15000).then(() => {
+                    sleep(parseInt(Math.random()*15000)).then(() => {
                         // Do something after the sleep!
                         udpServer.send(response, rinfo.port, rinfo.address, () => {
                             debug('>> sent response ssdp discovery response', response);
