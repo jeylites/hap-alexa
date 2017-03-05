@@ -2,7 +2,7 @@
   "name": "hap-alexa",
   "version": "0.0.5",
   "description": "HAP-NodeJS Modules to support Amazon Alexa Integration",
-  "main": "index.js",
+  "main": "ssdp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
