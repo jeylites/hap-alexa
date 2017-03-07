@@ -5,6 +5,10 @@ HAP-Alexa is a addon to HomeBridge / HAP-NodeJS that adds Amazon Alexa control t
 
 This is not a typical npm package, as it is not usable without Homebridge / HAP-NodeJS and is used exclusively by them.
 
+Homebridge device types shared with Alexa.
+
+* LightBulb, Outlet, Switch, Fan
+
 # Installation
 
 ```
@@ -14,7 +18,7 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 # Configuration
 
 * add a new setting "ssdp" to the bridge section of your homebridge config.json file. Value must be 1900. i.e
- 
+
 ```
  "bridge": {
     "name": "Howard",

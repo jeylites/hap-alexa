@@ -43,7 +43,7 @@ function handleHueApi(that, request, response, session, events, requestData) {
                     "Content-Type": "application/json"
                 });
 
-                debug("Accessory Dump",accessories);
+                debug("Accessory Dump", accessories);
 
                 response.end(JSON.stringify(lights(accessories)));
             }));
@@ -281,9 +281,10 @@ function _parseHbtoHue(accessories) {
             var actions = [];
             //            log("Service=", aid, serviceType);
             //            log("Object: %s", JSON.stringify(device.services[service], null, 2));
-            // Switch or Outlet
+            // LightBulb, Outlet, Switch, Fan, Accessory Info
             if (serviceType.startsWith("00000043") || serviceType.startsWith("00000047") ||
-                serviceType.startsWith("00000049") || serviceType.startsWith("0000003E")) {
+                serviceType.startsWith("00000049") || serviceType.startsWith("00000040") ||
+                serviceType.startsWith("0000003E")) {
                 for (var id in device.services[service].characteristics) {
                     //      log("ID=",id);
                     var characteristic = device.services[service].characteristics[id];
@@ -301,8 +302,10 @@ function _parseHbtoHue(accessories) {
                     }
                     if (cType.startsWith("00000023")) {
                         // Accessory Name
-                        name = characteristic.value;
-                        description = characteristic.description;
+                        if (characteristic.value) {
+                            name = characteristic.value;
+                            description = characteristic.description;
+                        }
                     }
 
                     // On/Off characteristic
