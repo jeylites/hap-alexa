@@ -106,7 +106,8 @@ function startSsdpServer(_config) {
                     const address = udpServer.address();
                     debug(`server listening ${address.address}:${address.port}`, ip.address());
                     //TODO:  Add logical interface
-                    udpServer.addMembership('239.255.255.250', ip.address());
+                  //  udpServer.addMembership('239.255.255.250', ip.address());
+                    udpServer.addMembership('239.255.255.250');
                     deferred.resolve();
                 } catch (err) {
                     debug('udp server error: %s', err.message);
