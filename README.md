@@ -3,6 +3,7 @@
 
 HAP-Alexa is a addon to HomeBridge / HAP-NodeJS that adds Amazon Alexa control to your Homebridge devices.
 
+This is not a typical npm package, as it is not usable without Homebridge / HAP-NodeJS and is used exclusively by them.
 
 # Installation
 
@@ -12,7 +13,7 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 
 # Configuration
 
-* add a new setting "ssdp" to the bridge section of your config.json file. Value must be 1900. i.e
+* add a new setting "ssdp" to the bridge section of your homebridge config.json file. Value must be 1900. i.e
  
 ```
  "bridge": {
@@ -29,6 +30,10 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 * This only works with Real Amazon Alexa devices, any RaspberryPI based devices like AlexaPI are not supported.
 * If you run homebridge on the same machine as Kodi, this feature will not work and you will receive an error during startup. If you start homebridge first, then Kodi it should be okay.
 * Only one per machine. If you are running multiple copies of homebridge on a machine, it will not work.
+
+# Troubleshooting / Issues
+
+* I have created a slack channel at (https://homebridgeteam.slack.com/messages/hap-alexa/) to troubleshoot issues.
 
 # Credits
 
