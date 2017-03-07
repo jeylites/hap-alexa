@@ -23,7 +23,7 @@ let udpServer;
 // M-SEARCH * HTTP/1.1
 // HOST: 239.255.255.250:1900
 // MAN: "ssdp:discover"
-// MX: 15   - Up to 15 seconds to respond
+// MX: 15   - Up to 15 seconds to respond, have also seen 3
 // ST: urn:schemas-upnp-org:device:basic:1
 //
 
@@ -82,16 +82,20 @@ function startSsdpServer(_config) {
             });
 
             udpServer.on('message', (msg, rinfo) => {
-                //                debug(`<< server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-
+                //debug(`<< server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+                var ssdpMsg = _getHeaders(msg.toString());
+                //debug(ssdpMsg);
                 if (msg.indexOf('ssdp:discover') > 0 && msg.indexOf('urn:schemas-upnp-org:device:basic') > 0) {
                     debug(`<< server got Hue: ${msg} from ${rinfo.address}:${rinfo.port}`);
                     var response = getDiscoveryResponses();
-                    sleep(parseInt(Math.random()*14000)).then(() => {
+                    sleep(parseInt(Math.random()*(ssdpMsg["MX"]*1000-1000))).then(() => {
                         // Do something after the sleep!
-                        udpServer.send(response, rinfo.port, rinfo.address, () => {
-                            debug('>> sent response ssdp discovery response', response);
-
+                        udpServer.send(response, rinfo.port, rinfo.address, (err) => {
+                            if ( err ) {
+                                debug('>> error sending SSDP discovery response', err,response);
+                              } else {
+                                debug('>> sent response SSDP discovery response', response);
+                              }
                         });
                     });
                 }
@@ -194,4 +198,19 @@ function getHueBridgeMac() {
 function sleep(time) {
     debug('sleep for',time);
     return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+function _getHeaders(msg) {
+  var lines = msg.split("\r\n");
+
+  var headers = {};
+
+  lines.forEach(function (line) {
+    if (line.length) {
+      var pairs = line.match(/^([^:]+):\s*(.*)$/);
+      if (pairs) headers[pairs[1].toUpperCase()] = pairs[2]; // e.g. {'HOST': 239.255.255.250:1900}
+    }
+  })
+
+  return headers;
 }

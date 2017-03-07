@@ -42,6 +42,9 @@ function handleHueApi(that, request, response, session, events, requestData) {
                 response.writeHead(200, {
                     "Content-Type": "application/json"
                 });
+
+                debug("Accessory Dump",accessories);
+
                 response.end(JSON.stringify(lights(accessories)));
             }));
             break;
