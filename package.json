@@ -1,6 +1,6 @@
 {
   "name": "hap-alexa",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "HAP-NodeJS Modules to support Amazon Alexa Integration",
   "main": "index.js",
   "scripts": {
