@@ -43,8 +43,8 @@ function handleHueApi(that, request, response, session, events, requestData) {
                     "Content-Type": "application/json"
                 });
 
-                debug("Accessory Dump", JSON.stringify(accessories, null, 2));
-                debug("------------------------------------------");
+//                debug("Accessory Dump", JSON.stringify(accessories, null, 2));
+//                debug("------------------------------------------");
 
                 response.end(JSON.stringify(lights(accessories)));
             }));
