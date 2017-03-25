@@ -50,11 +50,6 @@ sudo npm install -g https://github.com/NorthernMan54/homebridge
 * This only works with Real Amazon Alexa devices, any RaspberryPI based devices like AlexaPI are not supported.
 * If you have hue devices and homebridge-hue, your hue devices will appear twice to Alexa.  If you want to avoid this, setup a second instance of homebridge and move the homebridge-hue plugin to it, and don't enable this feature.
 
-## Resolved issues
-
-* If you run homebridge on the same machine as Kodi, this feature will not work and you will receive an error during startup. If you start homebridge first, then Kodi it should be okay.
-* Only one per machine. If you are running multiple copies of homebridge on a machine, it will not work.
-
 # Troubleshooting / Issues
 
 * I have created a slack channel at (https://homebridgeteam.slack.com/messages/hap-alexa/) to troubleshoot issues.
